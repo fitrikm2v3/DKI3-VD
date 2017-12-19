@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Data Kota</title>
-  </head>
-  <?php
+<?php
     define("HOSTNAME","localhost");
     define("USERNAME","root");
     define("PASSWORD","");
@@ -22,4 +17,3 @@
       }
       else{  }
   ?>
-</html>

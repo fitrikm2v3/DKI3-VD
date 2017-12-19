@@ -126,12 +126,14 @@
 				while($results = mysqli_fetch_array($query)) {
 				//extract($results);
 					if($wil != "" && $kec == ""){
+						$wilayah = ['wilayah' => $results['nama_wilayah']];
 						$data[] = ['kecamatan' => $results['nama_kecamatan'],
 						'islam' => $results['islam'], 'kristen' => $results['kristen'],'katholik' => $results['katholik'],
 						'hindu' => $results['hindu'],'budha' => $results['budha'],'konghucu' => $results['konghucu'],
 						'lainnya' => $results['lainnya']];
 					}
 					if ($wil != "" && $kec != "") {
+						$wilayah = ['wilayah' => $results['nama_wilayah'], 'kecamatan' => $results['nama_kecamatan']];
 						$data[] = ['kelurahan' => $results['nama_kelurahan'], 
 						'islam' => $results['islam'], 'kristen' => $results['kristen'],'katholik' => $results['katholik'],
 						'hindu' => $results['hindu'],'budha' => $results['budha'],'konghucu' => $results['konghucu'],
@@ -155,7 +157,14 @@
 							$data['lainnya'] = $results['lainnya']; */
 					}
 					// var_dump($data);
-					echo json_encode($data);
+					//echo json_encode($data);
+						// echo "<pre>";
+						// echo print_r($wilayah);
+						// echo print_r($data);
+						// echo "</pre>";
+					$test['info'] = $wilayah;
+					$test['data'] = $data;
+					echo json_encode($test);
 			}
 
 		?>

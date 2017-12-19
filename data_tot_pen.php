@@ -1,6 +1,6 @@
 <?php 
 include 'connectdb.php';
-
+header('Content-Type: application/json');
 $sql = "SELECT nama_wilayah, SUM(jumlah_penduduk) total_penduduk FROM datakota GROUP BY nama_wilayah";
 $query=mysqli_query($connect,$sql);	
 while ($results = mysqli_fetch_array($query)) {

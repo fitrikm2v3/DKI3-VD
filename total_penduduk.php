@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-		<script src="amcharts/amcharts.js" type="text/javascript"></script>
-    	<script src="amcharts/pie.js" type="text/javascript"></script>
-    	<script src="amcharts/plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
+		<script src="/amcharts/amcharts.js" type="text/javascript"></script>
+    	<script src="/amcharts/pie.js" type="text/javascript"></script>
+    	<script src="/amcharts/plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
 	</head>
 
 	<?php include "connectdb.php"; ?>
@@ -147,6 +147,7 @@
 									'penduduk' => $results['total_penduduk']];
 								}
 								if ($wil != "" && $kec != "") {
+									$wilayah = ['wilayah' => $results['nama_wilayah'], 'kecamatan' => $results['nama_kecamatan']];
 									$data[] = ['kelurahan' => $results["nama_kelurahan"], 'penduduk' => $results['total_penduduk']];
 								}
 								if ($wil != "" && $kec != "" && $kel != "") {
@@ -162,14 +163,20 @@
 							}
 						// var_dump($data);
 						// echo json_encode($data);
-						echo "<pre>";
-						echo print_r($wilayah);
-						echo print_r($data);
-						echo "</pre>";
+						$test['info'] = $wilayah;
+						$test['data'] = $data;
+						// echo "<pre>";
+						// echo print_r($test);
+						// echo "</pre>";
+
+						echo json_encode($test);
 					}
 
 		?>
 		</div>
+		<div class="col-md-12">
+		<h2 align="center">Total Penduduk Per Wilayah Kota Bandung</h5>
 		<div id="chartdiv" style="width: 100%; height: 500px;"></div>
+		</div>
 	</body>
 </html>

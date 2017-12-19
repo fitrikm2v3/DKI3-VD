@@ -123,10 +123,12 @@
 							$data['jumlah wanita'] = $results['jumlah_wanita']; */
 							//extract($results);
 							if($wil != "" && $kec == ""){
+								$wilayah = ['wilayah' => $results['nama_wilayah']];
 									$data[] = ['kecamatan' => $results['nama_kecamatan'], 
 									'jumlah pria' => $results['jumlah_pria'], 'jumlah wanita' => $results['jumlah_wanita']];
 								}
 								if ($wil != "" && $kec != "") {
+									$wilayah = ['wilayah' => $results['nama_wilayah'], 'kecamatan' => $results['nama_kecamatan']];
 									$data[] = [ 'kelurahan' => $results["nama_kelurahan"], 
 									'jumlah pria' => $results['jumlah_pria'], 'jumlah wanita' => $results['jumlah_wanita']];
 								}
@@ -136,7 +138,13 @@
 								}
 						}
 						// var_dump($data);
-						echo json_encode($data);
+						/*echo "<pre>";
+						echo print_r($wilayah);
+						echo print_r($data);
+						echo "</pre>";*/
+						$test['info'] = $wilayah;
+						$test['data'] = $data;
+						echo json_encode($test);
 					}
 
 		?>
